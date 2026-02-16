@@ -4,7 +4,6 @@ from pydantic import BaseModel, Field
 from typing import List, Dict
 import uvicorn
 import pickle
-import numpy as np
 from datetime import datetime
 import os
 
