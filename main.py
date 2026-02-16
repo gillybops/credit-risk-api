@@ -17,8 +17,9 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:3000",
-        "https://creditrisk.gilliannewton.com",
-        "https://creditrisk-frontend.vercel.app"
+        "https://credit-risk.gilliannewton.com",
+        "https://credit-risk-frontend-nine.vercel.app",
+        "https://credit-risk-frontend.vercel.app"
     ],
     allow_credentials=True,
     allow_methods=["*"],
