@@ -39,7 +39,7 @@ class LoanApplication(BaseModel):
     existing_debt: float = Field(..., ge=0, description="Existing debt amount")
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "applicant_income": 50000,
                 "loan_amount": 150000,
@@ -267,7 +267,7 @@ def get_required_features():
     """
     return {
         "required_features": LoanApplication.schema()["properties"],
-        "example": LoanApplication.Config.schema_extra["example"]
+        "example": LoanApplication.Config.json_schema_extra["example"]
     }
 
 if __name__ == "__main__":
