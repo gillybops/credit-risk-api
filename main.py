@@ -3,7 +3,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 from typing import List, Dict
 import uvicorn
-import pickle
 from datetime import datetime
 import os
 
@@ -266,7 +265,7 @@ def get_required_features():
     Get list of required features for scoring
     """
     return {
-        "required_features": LoanApplication.schema()["properties"],
+        "required_features": LoanApplication.model_json_schema()["properties"],
         "example": LoanApplication.Config.json_schema_extra["example"]
     }
 
