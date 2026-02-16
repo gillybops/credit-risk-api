@@ -1,4 +1,5 @@
-FROM python:3.11-slim
+cat > Dockerfile << 'EOF'
+FROM python:3.13-slim
 
 WORKDIR /app
 
@@ -19,3 +20,4 @@ HEALTHCHECK --interval=30s --timeout=3s --start-period=10s \
 
 # Run the application
 CMD ["python", "main.py"]
+EOF
