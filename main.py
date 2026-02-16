@@ -19,8 +19,8 @@ app.add_middleware(
         "http://localhost:3000",
         "https://credit-risk.gilliannewton.com",
         "https://credit-risk-frontend-nine.vercel.app",
-        "https://credit-risk-frontend.vercel.app"
-    ],
+        "https://credit-risk-frontend-isk4jc8hn-gillian-newtons-projects.vercel.app"
+],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
