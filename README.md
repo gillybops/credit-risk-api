@@ -165,7 +165,7 @@ Example integration:
 import requests
 
 response = requests.post(
-    "https://creditrisk-api.gilliannewton.com/api/v1/score",
+    "https://credit-risk-api.gilliannewton.com/api/v1/score",
     json={
         "applicant_income": 60000,
         "loan_amount": 180000,
