@@ -5,6 +5,11 @@ from typing import List, Dict
 import uvicorn
 from datetime import datetime
 import os
+from fastapi.responses import FileResponse
+import csv
+import io
+from datetime import datetime, timedelta
+import random
 
 app = FastAPI(
     title="Credit Risk Scoring API",
@@ -69,6 +74,8 @@ class ModelInfo(BaseModel):
     accuracy: float
     features: List[str]
     trained_on: str
+
+    model_config = {"protected_namespaces": ()}
 
 # Simple rule-based scoring (for demo - would be ML model in production)
 def calculate_risk_score(application: LoanApplication) -> RiskAssessment:
@@ -268,6 +275,20 @@ def get_required_features():
         "required_features": LoanApplication.model_json_schema()["properties"],
         "example": LoanApplication.Config.json_schema_extra["example"]
     }
+
+@app.get("/api/v1/export/historical")
+def export_historical_data():
+    """Export historical loan application data as CSV"""
+    csv_file = 'loan_applications.csv'
+    
+    if not os.path.exists(csv_file):
+        raise HTTPException(status_code=404, detail="Data file not found. Generate data first.")
+    
+    return FileResponse(
+        path=csv_file,
+        media_type='text/csv',
+        filename=f'loan_applications_{datetime.now().strftime("%Y%m%d")}.csv'
+    )
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 8000))
